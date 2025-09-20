@@ -1,6 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:dotted_border/dotted_border.dart';
 
+import '../registration_complete_screen/registration_screen.dart';
+import '../submission_success_screen/submission_success_screen.dart';
+
 class AadharCardScreen extends StatelessWidget {
   const AadharCardScreen({super.key});
 
@@ -62,7 +65,9 @@ class AadharCardScreen extends StatelessWidget {
                 child: SizedBox(
                   width: double.infinity,
                   child: ElevatedButton(
-                    onPressed: () {},
+                    onPressed: () {
+                      Navigator.push(context, MaterialPageRoute(builder: (context)=>SubmissionSuccessScreen()));
+                    },
                     style: ElevatedButton.styleFrom(
                       backgroundColor: const Color(0xFFFCE38A),
                       padding: const EdgeInsets.symmetric(vertical: 16),

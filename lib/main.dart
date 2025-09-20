@@ -1,6 +1,4 @@
 import 'package:flutter/material.dart';
-
-
 import 'otp_screen/DeliveryPartnerScreen.dart';
 
 void main() {
