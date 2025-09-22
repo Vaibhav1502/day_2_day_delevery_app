@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import '../account_profile_screen/account_profile_screen.dart';
+import '../orders_screen/orders_screen.dart';
 
 // An enum to manage the state of the order filters cleanly.
 enum OrderFilter { completed, pending }
@@ -156,7 +157,9 @@ class _HomeScreenState extends State<HomeScreen> {
         children: [
           // "Orders" Button (Active)
           ElevatedButton.icon(
-            onPressed: () {},
+            onPressed: () {
+              Navigator.push(context, MaterialPageRoute(builder: (context)=>OrdersScreen()));
+            },
             icon: const Icon(Icons.shopping_bag_outlined,color: Colors.black87,),
             label: const Text('Orders'),
             style: ElevatedButton.styleFrom(

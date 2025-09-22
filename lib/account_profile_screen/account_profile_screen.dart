@@ -47,7 +47,7 @@ class AccountScreen extends StatelessWidget {
           ],
         ),
       ),
-      bottomNavigationBar: _buildBottomNavigationBar(),
+      //bottomNavigationBar: _buildBottomNavigationBar(),
     );
   }
 
