@@ -68,7 +68,7 @@ class PersonalDocumentsScreen extends StatelessWidget {
         color: Colors.transparent,
         child: InkWell(
           onTap: () {
-            Navigator.push(context, MaterialPageRoute(builder: (context)=>AadharCardScreen()));
+            Navigator.pushReplacement(context, MaterialPageRoute(builder: (context)=>AadharCardScreen()));
           },
           borderRadius: BorderRadius.circular(12),
           child: Padding(

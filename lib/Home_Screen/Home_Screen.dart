@@ -1,6 +1,4 @@
 import 'package:flutter/material.dart';
-import '../account_profile_screen/account_profile_screen.dart';
-import '../orders_screen/orders_screen.dart';
 
 // An enum to manage the state of the order filters cleanly.
 enum OrderFilter { completed, pending }
@@ -18,20 +16,18 @@ class _HomeScreenState extends State<HomeScreen> {
 
   @override
   Widget build(BuildContext context) {
+    // NOTE: The Scaffold no longer has a bottomNavigationBar property.
     return Scaffold(
-      // A light grey background is often more professional and easier on the eyes.
       backgroundColor: const Color(0xFFFFFFFF),
       body: SafeArea(
         child: Column(
           children: [
             _buildHeader(),
             _buildFilterButtons(),
-            // The body content will now depend on the selected filter.
             _buildBodyContent(),
           ],
         ),
       ),
-      bottomNavigationBar: _buildBottomNavigationBar(),
     );
   }
 
@@ -77,13 +73,11 @@ class _HomeScreenState extends State<HomeScreen> {
   }
 
   /// A dynamic, reusable widget for a single filter button.
-  /// Its appearance changes based on whether it is active.
   Widget _buildFilterButton(String text, OrderFilter filter, Color activeColor) {
     final bool isActive = _selectedFilter == filter;
 
     return OutlinedButton(
       onPressed: () {
-        // When pressed, update the state to the new filter.
         setState(() {
           _selectedFilter = filter;
         });
@@ -104,8 +98,6 @@ class _HomeScreenState extends State<HomeScreen> {
 
   /// Builds the main content area, which can show orders or an empty state.
   Widget _buildBodyContent() {
-    // This is now structured to easily add order lists in the future.
-    // For now, both states show the "No New Orders" message.
     switch (_selectedFilter) {
       case OrderFilter.completed:
         return _buildEmptyState('No Completed Orders', "assets/images/no_order.png");
@@ -124,7 +116,7 @@ class _HomeScreenState extends State<HomeScreen> {
             Image.asset(
               imagePath,
               width: 200,
-              //color: Colors.grey.shade300, // Makes the image more subtle
+              color: Colors.grey.shade300,
             ),
             const SizedBox(height: 24),
             Text(
@@ -133,62 +125,6 @@ class _HomeScreenState extends State<HomeScreen> {
             ),
           ],
         ),
-      ),
-    );
-  }
-
-  /// Builds a professional bottom navigation bar that clearly shows the active tab.
-  Widget _buildBottomNavigationBar() {
-    return Container(
-      height: 90,
-      decoration: BoxDecoration(
-        color: Colors.white,
-        borderRadius: const BorderRadius.vertical(top: Radius.circular(30)),
-        boxShadow: [
-          BoxShadow(
-            color: Colors.grey.withOpacity(0.2),
-            spreadRadius: 5,
-            blurRadius: 15,
-          ),
-        ],
-      ),
-      child: Row(
-        mainAxisAlignment: MainAxisAlignment.spaceAround,
-        children: [
-          // "Orders" Button (Active)
-          ElevatedButton.icon(
-            onPressed: () {
-              Navigator.push(context, MaterialPageRoute(builder: (context)=>OrdersScreen()));
-            },
-            icon: const Icon(Icons.shopping_bag_outlined,color: Colors.black87,),
-            label: const Text('Orders'),
-            style: ElevatedButton.styleFrom(
-              foregroundColor: Colors.black87,
-              backgroundColor: const Color(0xFFFFD149),
-              padding: const EdgeInsets.symmetric(horizontal: 30, vertical: 12),
-              shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(15)),
-              elevation: 0,
-            ),
-          ),
-          // "Account" Button (Inactive)
-          ElevatedButton.icon(
-            onPressed: () {
-              Navigator.push(
-                context,
-                MaterialPageRoute(builder: (context) => const AccountScreen()),
-              );
-            },
-            icon: const Icon(Icons.person_2_outlined,color: Colors.black87,),
-            label: const Text('Account'),
-            style: ElevatedButton.styleFrom(
-              foregroundColor: Colors.black87,
-              backgroundColor: const Color(0xFFFFD149),
-              padding: const EdgeInsets.symmetric(horizontal: 30, vertical: 12),
-              shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(15)),
-              elevation: 0,
-            ),
-          ),
-        ],
       ),
     );
   }

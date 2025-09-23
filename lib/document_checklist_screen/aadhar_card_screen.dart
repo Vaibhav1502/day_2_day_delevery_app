@@ -66,7 +66,7 @@ class AadharCardScreen extends StatelessWidget {
                   width: double.infinity,
                   child: ElevatedButton(
                     onPressed: () {
-                      Navigator.push(context, MaterialPageRoute(builder: (context)=>SubmissionSuccessScreen()));
+                      Navigator.pushReplacement(context, MaterialPageRoute(builder: (context)=>SubmissionSuccessScreen()));
                     },
                     style: ElevatedButton.styleFrom(
                       backgroundColor: const Color(0xFFFCE38A),

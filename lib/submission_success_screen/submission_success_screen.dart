@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:lottie/lottie.dart';
+import '../BottomNavigation_main_screen/main_screen.dart';
 import '../Home_Screen/Home_Screen.dart';
 import '../registration_complete_screen/registration_screen.dart';
 
@@ -51,10 +52,9 @@ class SubmissionSuccessScreen extends StatelessWidget {
                 ),
                 const SizedBox(height: 40.0),
 
-                // "Okay" button
                 OutlinedButton(
                   onPressed: () {
-                     Navigator.push(context, MaterialPageRoute(builder: (context) => const HomeScreen()));
+                     Navigator.pushReplacement(context, MaterialPageRoute(builder: (context) => const MainScreen()));
                     //Navigator.of(context).pop();
                   },
                   style: OutlinedButton.styleFrom(
@@ -65,7 +65,7 @@ class SubmissionSuccessScreen extends StatelessWidget {
                     ),
                   ),
                   child: Text(
-                    'Okay',
+                    'Go to home screen',
                     style: TextStyle(
                       fontSize: 16.0,
                       fontWeight: FontWeight.w600,
