@@ -36,6 +36,9 @@ dependencies:
   cupertino_icons: ^1.0.8
   dotted_border: ^2.1.0
   lottie:
+  google_maps_flutter: ^2.13.1
+  sliding_up_panel: ^2.0.0+1
+
 
 dev_dependencies:
   flutter_test:
