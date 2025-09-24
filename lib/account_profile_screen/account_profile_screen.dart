@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 
+import '../leave_screen/leave_screen.dart';
+
 class AccountScreen extends StatelessWidget {
   const AccountScreen({super.key});
 
@@ -30,7 +32,7 @@ class AccountScreen extends StatelessWidget {
                         ),
                       ),
                       const SizedBox(height: 16),
-                      _buildOptionsList(),
+                      _buildOptionsList(context),
                       const SizedBox(height: 24),
                       const Center(
                         child: Text(
@@ -133,31 +135,34 @@ class AccountScreen extends StatelessWidget {
   }
 
   /// Builds the list of selectable options.
-  Widget _buildOptionsList() {
+  Widget _buildOptionsList(BuildContext context) {
     return Column(
       children: [
-        _buildOptionItem(Icons.person_outline, 'Edit Profile'),
-        _buildOptionItem(Icons.location_on_outlined, 'Allotted Area'),
-        _buildOptionItem(Icons.card_giftcard_outlined, 'Refer and Earn'),
-        _buildOptionItem(Icons.headset_mic_outlined, 'Support'),
-        _buildOptionItem(Icons.quiz_outlined, 'FAQ'),
-        _buildOptionItem(Icons.description_outlined, 'Terms and Conditions'),
-        _buildOptionItem(Icons.visibility_outlined, 'Privacy Policy'),
-        _buildOptionItem(Icons.calendar_today_outlined, 'Ask For Leave'),
-        _buildOptionItem(Icons.logout, 'Log Out', isLogout: true),
+        _buildOptionItem(context, Icons.person_outline, 'Edit Profile'),
+        _buildOptionItem(context, Icons.settings_outlined, 'Settings'),
+        _buildOptionItem(context, Icons.location_on_outlined, 'Allotted Area'),
+        _buildOptionItem(context, Icons.card_giftcard_outlined, 'Refer and Earn'),
+        _buildOptionItem(context, Icons.headset_mic_outlined, 'Support'),
+        _buildOptionItem(context, Icons.quiz_outlined, 'FAQ'),
+        _buildOptionItem(context, Icons.description_outlined, 'Terms and Conditions'),
+        _buildOptionItem(context, Icons.visibility_outlined, 'Privacy Policy'),
+        _buildOptionItem(context, Icons.calendar_today_outlined, 'Ask For Leave'),
+        _buildOptionItem(context, Icons.logout, 'Log Out', isLogout: true),
       ],
     );
   }
 
   /// Reusable widget for each item in the options list.
-  Widget _buildOptionItem(IconData icon, String title, {bool isLogout = false}) {
+  Widget _buildOptionItem(BuildContext context, IconData icon, String title, {bool isLogout = false}) {
     final color = isLogout ? Colors.red : Colors.red.shade400;
     return Card(
       margin: const EdgeInsets.symmetric(vertical: 6.0),
       elevation: 0,
       shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(15)),
       child: InkWell(
-        onTap: () {},
+        onTap: () {
+          Navigator.push(context, MaterialPageRoute(builder: (context)=>AskForLeaveScreen()));
+        },
         borderRadius: BorderRadius.circular(15),
         child: Padding(
           padding: const EdgeInsets.all(16.0),
@@ -184,55 +189,55 @@ class AccountScreen extends StatelessWidget {
   }
 
   /// Builds the custom bottom navigation bar.
-  Widget _buildBottomNavigationBar() {
-    return Container(
-      height: 90,
-      decoration: BoxDecoration(
-        color: Colors.white,
-        borderRadius: const BorderRadius.vertical(top: Radius.circular(30)),
-        boxShadow: [
-          BoxShadow(
-            color: Colors.grey.withOpacity(0.2),
-            spreadRadius: 5,
-            blurRadius: 15,
-          ),
-        ],
-      ),
-      child: Row(
-        mainAxisAlignment: MainAxisAlignment.spaceAround,
-        children: [
-          // "Orders" Button
-          ElevatedButton.icon(
-            onPressed: () {},
-            icon: const Icon(Icons.shopping_bag_outlined),
-            label: const Text('Orders'),
-            style: ElevatedButton.styleFrom(
-              foregroundColor: Colors.black87,
-              backgroundColor: const Color(0xFFFFD149),
-              padding: const EdgeInsets.symmetric(horizontal: 30, vertical: 12),
-              shape: RoundedRectangleBorder(
-                borderRadius: BorderRadius.circular(15),
-              ),
-              elevation: 0,
-            ),
-          ),
-          // "Account" Button (Active)
-          TextButton.icon(
-            onPressed: () {},
-            icon: const Icon(Icons.person_outline, color: Colors.black87),
-            label: const Text(
-              'Account',
-              style: TextStyle(
-                color: Colors.black87,
-                fontWeight: FontWeight.bold,
-              ),
-            ),
-            style: TextButton.styleFrom(
-              padding: const EdgeInsets.symmetric(horizontal: 30, vertical: 12),
-            ),
-          ),
-        ],
-      ),
-    );
-  }
+  // Widget _buildBottomNavigationBar() {
+  //   return Container(
+  //     height: 90,
+  //     decoration: BoxDecoration(
+  //       color: Colors.white,
+  //       borderRadius: const BorderRadius.vertical(top: Radius.circular(30)),
+  //       boxShadow: [
+  //         BoxShadow(
+  //           color: Colors.grey.withOpacity(0.2),
+  //           spreadRadius: 5,
+  //           blurRadius: 15,
+  //         ),
+  //       ],
+  //     ),
+  //     child: Row(
+  //       mainAxisAlignment: MainAxisAlignment.spaceAround,
+  //       children: [
+  //         // "Orders" Button
+  //         ElevatedButton.icon(
+  //           onPressed: () {},
+  //           icon: const Icon(Icons.shopping_bag_outlined),
+  //           label: const Text('Orders'),
+  //           style: ElevatedButton.styleFrom(
+  //             foregroundColor: Colors.black87,
+  //             backgroundColor: const Color(0xFFFFD149),
+  //             padding: const EdgeInsets.symmetric(horizontal: 30, vertical: 12),
+  //             shape: RoundedRectangleBorder(
+  //               borderRadius: BorderRadius.circular(15),
+  //             ),
+  //             elevation: 0,
+  //           ),
+  //         ),
+  //         // "Account" Button (Active)
+  //         TextButton.icon(
+  //           onPressed: () {},
+  //           icon: const Icon(Icons.person_outline, color: Colors.black87),
+  //           label: const Text(
+  //             'Account',
+  //             style: TextStyle(
+  //               color: Colors.black87,
+  //               fontWeight: FontWeight.bold,
+  //             ),
+  //           ),
+  //           style: TextButton.styleFrom(
+  //             padding: const EdgeInsets.symmetric(horizontal: 30, vertical: 12),
+  //           ),
+  //         ),
+  //       ],
+  //     ),
+  //   );
+  // }
 }

@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
-
 import '../Home_Screen/Home_Screen.dart';
 import '../account_profile_screen/account_profile_screen.dart';
+import '../orders_screen/orders_screen.dart';
 
 
 class MainScreen extends StatefulWidget {
@@ -15,9 +15,10 @@ class _MainScreenState extends State<MainScreen> {
   // Index to keep track of the selected tab
   int _selectedIndex = 0;
 
-  // List of the screens to be displayed
+  // 2. Update the list to include all three screens in the correct order
   static const List<Widget> _screens = <Widget>[
     HomeScreen(),
+    OrdersScreen(),
     AccountScreen(),
   ];
 
@@ -41,10 +42,10 @@ class _MainScreenState extends State<MainScreen> {
   /// Builds the common bottom navigation bar for the entire app.
   Widget _buildCommonBottomNavigationBar() {
     return Container(
-      height: 90,
+      height: 70,
       decoration: BoxDecoration(
         color: Colors.white,
-        borderRadius: const BorderRadius.vertical(top: Radius.circular(30)),
+        borderRadius: const BorderRadius.vertical(top: Radius.circular(15)),
         boxShadow: [
           BoxShadow(
             color: Colors.grey.withOpacity(0.2),
@@ -56,17 +57,23 @@ class _MainScreenState extends State<MainScreen> {
       child: Row(
         mainAxisAlignment: MainAxisAlignment.spaceAround,
         children: [
+          // "Home" Button
+          _buildNavItem(
+            icon: Icons.home_outlined,
+            label: 'Home',
+            index: 0,
+          ),
           // "Orders" Button
           _buildNavItem(
             icon: Icons.shopping_bag_outlined,
             label: 'Orders',
-            index: 0,
+            index: 1,
           ),
           // "Account" Button
           _buildNavItem(
             icon: Icons.person_outline,
             label: 'Account',
-            index: 1,
+            index: 2,
           ),
         ],
       ),
@@ -91,7 +98,8 @@ class _MainScreenState extends State<MainScreen> {
         style: ElevatedButton.styleFrom(
           foregroundColor: Colors.black87,
           backgroundColor: const Color(0xFFFFD149),
-          padding: const EdgeInsets.symmetric(horizontal: 30, vertical: 12),
+          // 3. (Optional but Recommended) Slightly reduce padding to fit 3 items comfortably
+          padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 12),
           shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(15)),
           elevation: 0,
         ),
@@ -105,7 +113,7 @@ class _MainScreenState extends State<MainScreen> {
           style: const TextStyle(color: Colors.black87, fontWeight: FontWeight.normal),
         ),
         style: TextButton.styleFrom(
-          padding: const EdgeInsets.symmetric(horizontal: 30, vertical: 12),
+          padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 12),
         ),
       );
     }
