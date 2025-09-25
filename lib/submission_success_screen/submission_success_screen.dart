@@ -1,12 +1,24 @@
+import 'dart:async';
 import 'package:flutter/material.dart';
 import 'package:lottie/lottie.dart';
 import '../BottomNavigation_main_screen/main_screen.dart';
-import '../Home_Screen/Home_Screen.dart';
-import '../registration_complete_screen/registration_screen.dart';
 
-class SubmissionSuccessScreen extends StatelessWidget {
+
+class SubmissionSuccessScreen extends StatefulWidget {
   const SubmissionSuccessScreen({super.key});
 
+  @override
+  State<SubmissionSuccessScreen> createState() => _SubmissionSuccessScreenState();
+}
+
+class _SubmissionSuccessScreenState extends State<SubmissionSuccessScreen> {
+  @override
+  void initState() {
+    super.initState();
+    Timer(Duration(seconds: 2),(){
+      Navigator.pushReplacement(context, MaterialPageRoute(builder: (context)=>MainScreen()));
+    });
+  }
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -20,17 +32,11 @@ class SubmissionSuccessScreen extends StatelessWidget {
               crossAxisAlignment: CrossAxisAlignment.stretch,
               children: [
                 Lottie.asset('assets/images/Verified Badge.json',height: 300,width: 120,),
-                // The verified icon
-                // const Icon(
-                //   Icons.verified,
-                //   color: Color(0xFFFBC02D), // A vibrant yellow
-                //   size: 120.0,
-                // ),
                 const SizedBox(height: 32.0),
 
                 // Success message title
                 const Text(
-                  'Your application is submitted successfully',
+                  'Registration Successful',
                   textAlign: TextAlign.center,
                   style: TextStyle(
                     fontSize: 24.0,
@@ -74,28 +80,28 @@ class SubmissionSuccessScreen extends StatelessWidget {
                   ),
                 ),
                 const SizedBox(height: 30.0),
-                ElevatedButton(
-                 style: ElevatedButton.styleFrom(
-                   backgroundColor: Colors.amber.shade300,
-                   padding: const EdgeInsets.symmetric(vertical: 14),
-                   side: BorderSide(color: Colors.amber.shade300, width: 1.5),
-                   shape: RoundedRectangleBorder(
-                     borderRadius: BorderRadius.circular(30.0),
-                   ),
-                 ),
-                 onPressed:  () {
-                    Navigator.push(context, MaterialPageRoute(builder: (context) => const RegistrationStatusScreen()));
-                  },
-                  child: const Text(
-                    'Check Application Status',
-                    textAlign: TextAlign.center,
-                    style: TextStyle(
-                      fontSize: 16.0,
-                      color: Colors.black,
-                      height: 1.4,
-                    ),
-                  ),
-                ),
+                // ElevatedButton(
+                //  style: ElevatedButton.styleFrom(
+                //    backgroundColor: Colors.amber.shade300,
+                //    padding: const EdgeInsets.symmetric(vertical: 14),
+                //    side: BorderSide(color: Colors.amber.shade300, width: 1.5),
+                //    shape: RoundedRectangleBorder(
+                //      borderRadius: BorderRadius.circular(30.0),
+                //    ),
+                //  ),
+                //  onPressed:  () {
+                //     Navigator.push(context, MaterialPageRoute(builder: (context) => const RegistrationStatusScreen()));
+                //   },
+                //   child: const Text(
+                //     'Check Application Status',
+                //     textAlign: TextAlign.center,
+                //     style: TextStyle(
+                //       fontSize: 16.0,
+                //       color: Colors.black,
+                //       height: 1.4,
+                //     ),
+                //   ),
+                // ),
               ],
             ),
           ),

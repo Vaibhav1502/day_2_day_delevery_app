@@ -1,6 +1,5 @@
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
-
 import '../personal_info/personal_info.dart';
 
 class OtpScreen extends StatelessWidget {
