@@ -1,3 +1,4 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
 // An enum to manage the state of the order filters cleanly.
@@ -36,7 +37,7 @@ class _HomeScreenState extends State<HomeScreen> {
     return const Row(
       mainAxisAlignment: MainAxisAlignment.center,
       children: [
-        Icon(Icons.home, size: 28),
+        Icon(CupertinoIcons.house_fill, size: 28),
         SizedBox(width: 8),
         Text(
           'Home',
